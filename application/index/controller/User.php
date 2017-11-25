@@ -22,13 +22,12 @@ class User
         $user->nickname = '流年';
         if ($user->save()) {
             // 写入关联数据
-            $profile = new Profile;
-            $profile->truename = '刘晨';
-            $profile->birthday = '1977-03-05';
-            $profile->address  = '中国上海';
-            $profile->email    = 'thinkphp@qq.com';
+            $profile['truename'] = '刘晨'; 
+            $profile['birthday'] = '1977-03-05';
+            $profile['address']  = '中国上海';
+            $profile['email']    = 'thinkphp@qq.com';
             $user->profile()->save($profile);
-            return '用户新增成功';
+            return '用户[ ' . $user->name . ' ]新增成功';
         } else {
             return $user->getError();
         }
